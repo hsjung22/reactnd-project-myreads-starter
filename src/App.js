@@ -16,6 +16,18 @@ class BooksApp extends Component {
     )
   }
 
+  handleShelfUpdate = (book, shelf) => {
+    this.setState(prevState => ({
+      books: prevState.books.map(b =>
+        (b.id === book.id)
+          ? {...b, shelf}
+          : b
+      )
+    }))
+
+    BooksAPI.update(book, shelf)
+  }
+
   render() {
     return (
       <div className="app">
@@ -29,6 +41,7 @@ class BooksApp extends Component {
           render={() => (
             <ListBooks
               books={this.state.books}
+              handleShelfUpdate={this.handleShelfUpdate}
             />
           )}
         />
