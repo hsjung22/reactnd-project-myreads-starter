@@ -2,6 +2,18 @@ import React from 'react'
 
 function Book(props) {
   const { book, handleShelfUpdate } = props
+  const authors = book.authors
+    ? book.authors.map((author, index) =>
+        <div
+          key={index}
+          className="book-authors"
+        >
+          {author}
+        </div>
+      )
+    : []
+
+
   return (
     <div className="book">
       <div className="book-top">
@@ -24,7 +36,7 @@ function Book(props) {
         </div>
       </div>
       <div className="book-title">{book.title}</div>
-      <div className="book-authors">{book.authors[0]}</div>
+      {authors}
     </div>
   )
 }
