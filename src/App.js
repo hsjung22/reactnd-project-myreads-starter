@@ -11,7 +11,7 @@ class BooksApp extends Component {
   }
 
   componentDidMount() {
-    BooksAPI.getAll().then(books => 
+    BooksAPI.getAll().then(books =>
       this.setState({ books })
     )
   }
@@ -29,6 +29,8 @@ class BooksApp extends Component {
   }
 
   render() {
+    const { books } = this.state
+    const { handleShelfUpdate } = this
     return (
       <div className="app">
         <Route
@@ -38,12 +40,12 @@ class BooksApp extends Component {
         <Route
           exact
           path="/"
-          render={() => (
+          render={() =>
             <ListBooks
-              books={this.state.books}
-              handleShelfUpdate={this.handleShelfUpdate}
+              books={books}
+              handleShelfUpdate={handleShelfUpdate}
             />
-          )}
+          }
         />
       </div>
     )
