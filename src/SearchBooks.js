@@ -9,9 +9,7 @@ class SearchBooks extends Component {
     query: ''
   }
 
-  updateQuery = (input) => {
-    const query = input.trim()
-
+  updateQuery = (query) => {
     this.setState({ query })
 
     query
@@ -59,7 +57,7 @@ class SearchBooks extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {this.state.books.map(book => 
+            {this.state.books.map(book =>
               <li key={book.id}>
                 <Book
                   book={book}
