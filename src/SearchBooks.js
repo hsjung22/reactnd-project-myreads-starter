@@ -9,18 +9,18 @@ class SearchBooks extends Component {
     query: ''
   }
 
-  updateQuery = (query) => {
-    const trimQuery = query.trim()
+  updateQuery = (input) => {
+    const query = input.trim()
 
-    this.setState({ query: trimQuery })
+    this.setState({ query })
 
-    if(trimQuery) {
-      BooksAPI.search(trimQuery).then(books => {
-        books.error
-          ? this.setState({ books: books.items })
-          : this.setState({ books })
-      })
-    }
+    query
+      ? BooksAPI.search(query).then(books => {
+          books.error
+            ? this.setState({ books: books.items })
+            : this.setState({ books })
+        })
+      : this.setState({ books: [] })
   }
 
   handleShelfUpdate = (book, shelf) => {
