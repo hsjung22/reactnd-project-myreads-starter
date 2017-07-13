@@ -60,7 +60,7 @@ class SearchBooks extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {this.state.books.map(book =>
+            {this.state.books.filter(book => book.shelf === "none").map(book =>
               <li key={book.id}>
                 <Book
                   book={book}
