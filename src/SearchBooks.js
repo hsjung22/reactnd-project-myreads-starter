@@ -10,6 +10,9 @@ class SearchBooks extends Component {
   }
 
   updateQuery = (query) => {
+    // remove leading spaces from query
+    query = query.replace(/^ +/gm, '')
+
     this.setState({ query })
 
     query
