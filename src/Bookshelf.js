@@ -7,7 +7,7 @@ function Bookshelf(props) {
       <h2 className="bookshelf-title">{props.shelf}</h2>
       <div className="bookshelf-books">
         <ol className="books-grid">
-          {props.books.map(book => 
+          {props.books.map(book =>
             <li key={book.id}>
               <Book
                 book={book}
@@ -17,7 +17,7 @@ function Bookshelf(props) {
           )}
         </ol>
       </div>
-    </div>   
+    </div>
   )
 }
 
