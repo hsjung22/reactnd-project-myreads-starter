@@ -18,7 +18,11 @@ function Book(props) {
       <div className="book-top">
         <div 
           className="book-cover"
-          style={{ width: 128, height: 188, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}
+          style={{
+            width: 128,
+            height: 188,
+            backgroundImage: `url(${book.imageLinks && book.imageLinks.smallThumbnail})`
+          }}
         />
         <div className="book-shelf-changer">
           <select

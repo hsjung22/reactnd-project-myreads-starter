@@ -18,7 +18,7 @@ class SearchBooks extends Component {
       BooksAPI.search(trimQuery).then(books => {
         books.error
           ? this.setState({ books: books.items })
-          : this.setState({ books: books })
+          : this.setState({ books })
       })
     }
   }
