@@ -3,8 +3,8 @@
 A bookshelf app project from Udacity's React Fundamentals course that allows users to search for and categorize books into "read", "currently reading", or "want to read."
 
 To run:
-# npm install
-# npm start
+* npm install
+* npm start
 
 
 ## Backend Server
