@@ -5,7 +5,6 @@ import Book from './Book'
 
 class SearchBooks extends Component {
   state = {
-    books: [],
     query: ''
   }
 
@@ -18,26 +17,16 @@ class SearchBooks extends Component {
     query
       ? BooksAPI.search(query).then(books => {
           books.error
-            ? this.setState({ books: books.items })
-            : this.setState({ books })
+            ? this.props.handleSearchResults(books.items)
+            : this.props.handleSearchResults(books)
         })
-      : this.setState({ books: [] })
-  }
-
-  handleShelfUpdate = (book, shelf) => {
-    this.setState(prevState => ({
-      books: prevState.books.map(b =>
-        (b.id === book.id)
-          ? {...b, shelf}
-          : b
-      )
-    }))
-
-    BooksAPI.update(book, shelf)
+      : this.props.handleSearchResults([])
   }
 
   render() {
     const { query } = this.state
+    const { handleShelfUpdate, books } = this.props
+    const bookResults = query ? books : []
 
     return (
       <div className="search-books">
@@ -60,11 +49,11 @@ class SearchBooks extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {this.state.books.filter(book => book.shelf === "none").map(book =>
-              <li key={book.id}>
+            {bookResults.map((book, index) =>
+              <li key={index}>
                 <Book
                   book={book}
-                  handleShelfUpdate={this.handleShelfUpdate}
+                  handleShelfUpdate={handleShelfUpdate}
                 />
               </li>
             )}
